@@ -1,0 +1,146 @@
+@blue: #2c3e50;
+@light-blue: #E7F3F8;
+@grey: #7f8c8d;
+@white: #FFFFFF;
+
+
+/******************************************************************************
+*	LISTING PAGE STYLES
+******************************************************************************/
+
+.listing-item {
+	padding: 0;
+	margin-top: 50px;
+
+	.listing-book {
+		margin-top : 15px; 
+		button {
+			border-radius: 0;
+			font-weight: bold;
+		}
+	}
+
+	.listing-thumbnail {
+		width: 100%;
+	}
+
+	.listing-title {
+		color: @white;
+		font-weight: bold;
+		font-size: 18px;
+		margin-bottom: 8px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.listing-synopsis {
+		height: 140px;
+		color: @white;
+		margin-bottom: 8px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.listing-status {
+	}
+}
+
+/******************************************************************************
+*	MOVIE PAGE STYLES
+******************************************************************************/
+
+.movie-info {
+	background-color: @light-blue;
+	padding-top: 30px;
+}
+
+.movie-details {
+	.movie-title {
+		margin-bottom: 20px;
+		font-size: 25px;
+		font-weight: bold;
+		// color: @white;
+	}
+
+	div span:first-child {
+		color: @grey;
+		padding-left: 0;
+	}
+
+	div span:last-child {
+		// color: @white;
+	}
+
+	.movie-book {
+		margin-top: 20px;
+		
+		button {
+			font-weight: bold;
+			border-radius: 0
+		}
+	}
+
+	.movie-synopsis {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+}
+
+.movie-showtimes {
+	background-color: @white;
+
+	.movie-showtime-container {
+
+		.movie-showtime-venue {
+			border-top: 2px solid @blue;
+			border-bottom: 1px solid @blue;
+			padding: 10px 0 10px 0;
+			font-weight: bold;
+		}
+
+		.movie-showtime-list {
+			list-style: none;
+			padding: 0;
+
+			& > li {
+				height: 40px;
+				padding: 10px 0 10px 0;
+				border-top: 1px solid @blue;
+			}
+		}
+
+		.movie-showtime-timelist {
+			list-style: none;
+			padding: 0;
+			li {
+				display: inline;
+			}
+		}
+	}
+}
+
+/******************************************************************************
+*	BOOKING PAGE STYLES
+******************************************************************************/
+
+.booking-movie-info {
+	background-color: @light-blue;
+	border-radius: 5px;
+	border: none;
+	font-size: 18px;
+
+	.panel-heading {
+		background-color: #e74c3c;
+		padding: 10px 10px 10px 40px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+}
+
+.booking-movie-seats {
+	.booking-seats-selection {
+		background-color: #000;
+		height: 500px;
+	}
+}
