@@ -22,8 +22,6 @@ exports.config =
           # collapse requires transitions
           'vendor/scripts/bootstrap/collapse.js'
           'vendor/scripts/bootstrap/transition.js'
-
-          'vendor/scripts/seat/seat.js'
           
           'test/vendor/scripts/test-helper.js'
         ]
