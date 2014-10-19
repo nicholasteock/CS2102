@@ -3,6 +3,5 @@ var View     = require('./view'),
 
 module.exports = View.extend({
     id: 'confirmation-view',
-    afterRender: afterRender,
     template: template,
 });

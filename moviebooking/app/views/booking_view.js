@@ -2,7 +2,7 @@ var View     = require('./view'),
 	template = require('./templates/booking');
 
 var events = {
-	'click .seat' 	: 'seatClicked'
+  'click .seat'  : 'seatClicked'
 };
 
 var afterRender = function() {
@@ -14,7 +14,7 @@ var afterRender = function() {
 		// var bookedSeats = [5, 10, 25];
 		// init(bookedSeats);
 		init([ "A-1", "B-10", "C-5" ]);
-	}, 100);
+	}, 1000);
 };
 
 var settings = {
@@ -55,11 +55,10 @@ var init = function (reservedSeat) {
         }
     }
     $('#place').html(str.join(''));
-
-    var seatHtmlArray = [], rowStr = "", seatNo, className;
 };
 
 var seatClicked = function( ev ) {
+  console.log("HERE", ev);
 	var $seat = $(ev.target),
 		targetClasses = "",
 		seatRow = "",
@@ -86,8 +85,8 @@ var seatClicked = function( ev ) {
 
 module.exports = View.extend({
     id: 'booking-view',
+    events: events,
     afterRender: afterRender,
     template: template,
-    events: events,
     seatClicked: seatClicked
 })
