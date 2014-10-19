@@ -2,12 +2,12 @@ var application = require('application')
 
 module.exports 	= Backbone.Router.extend({
     routes: {
-        '' 			: 'login',
-        'login' 	: 'login',
-        'listing' 	: 'listing',
-        'movie' 	: 'movie',
-        'booking' 	: 'booking',
-        'home' 		: 'home',
+        '' 				: 'login',
+        'login' 		: 'login',
+        'listing' 		: 'listing',
+        'movie' 		: 'movie',
+        'booking' 		: 'booking',
+        'confirmation' 	: 'confirmation',
     },
     
     login: function() {
@@ -26,8 +26,8 @@ module.exports 	= Backbone.Router.extend({
         $('body').html(application.bookingView.render().el)
     },
     
-    home: function() {
-        $('body').html(application.homeView.render().el)
+    confirmation: function() {
+        $('body').html(application.confirmationView.render().el)
     },
 
 })
