@@ -1,0 +1,76 @@
+#seats{
+	height: 400px;    
+	width: 715px;
+	padding: 5px 0 5px 0;
+	// background-color:#FFCC00;
+}
+
+#place {
+	position:relative;
+	margin:7px;
+}
+
+#place a{
+	font-size:0.6em;
+}
+
+#place li
+{
+ list-style: none outside none;
+ position: absolute;   
+}  
+
+#place li:hover
+{
+	background-color:yellow;      
+}
+
+#place .seat{
+	background:url("../img/seat/available_seat_img.jpg") no-repeat scroll 0 0 transparent;
+	height:33px;
+	width:33px;
+	display:block;
+	cursor: pointer;
+
+	a {
+		display: none;
+	}
+
+	&:hover {
+		-webkit-filter: saturate(50);
+  		filter: saturate(50);
+	}
+}
+
+#place .selectedSeat
+{ 
+	background-image:url("../img/seat/booked_seat_img.jpg");          
+
+	&:hover {
+		cursor: default;
+		-webkit-filter: none;
+  		filter: none;
+	}
+}
+
+#place .selectingSeat
+{ 
+	background-image:url("../img/seat/selected_seat_img.jpg");        
+
+	&:hover {
+		-webkit-filter: none;
+  		filter: none;
+	}
+}
+
+#place .col-3{
+	
+}
+
+#seatDescription li{
+	verticle-align:middle;    
+	list-style: none outside none;
+	padding-left:35px;
+	height:35px;
+	float:left;
+}
