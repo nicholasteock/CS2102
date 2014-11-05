@@ -10,7 +10,7 @@ Application = {
         	BookingView 		= require('views/booking_view')
         	Router   			= require('lib/router');
         
-        this.api                = "http://192.168.1.171:8080/api/";
+        this.api                = "ec2-54-186-194-217.us-west-2.compute.amazonaws.com:8080/api/";
 
         this.confirmationView 	= new ConfirmationView();
         this.loginView          = new LoginView();
