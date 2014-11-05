@@ -2,18 +2,85 @@ var View     = require('./view'),
 	template = require('./templates/booking');
 
 var events = {
-  'click .seat'  : 'seatClicked'
+  // 'click .seat'  : 'seatClicked'
+  // 'click .submitbooking'  : 'submitBooking'
+};
+
+var bookedSeats;
+
+var movieDetails;
+
+var getRenderData = function() {
+  if(localStorage.userId == undefined || localStorage.name == undefined) {
+    alert("Please log in to continue");
+    window.location.hash = "#login";
+    window.location.hash = "#login";
+    return false;
+  }
+
+  var hash    = window.location.hash,
+      temp    = hash.indexOf('?sid='),
+      sid     = hash.substring(temp+5),
+      params  = {sid: sid};
+  
+  var dfdResult = $.Deferred();
+
+  var onSuccess = function( response ) {
+    var seats       = response.data;
+    var responseObj = {};
+    bookedSeats     = [];
+
+    for(var i=0; i<seats.length; i++) {
+      bookedSeats.push(seats[i].SEATNUM);
+    }
+
+    $.ajax({
+        url       : Application.api+"movie?sid="+sid,
+        type      : "GET",
+        dataType  : 'json',
+        success   : function(response) {
+          var details = response.data;
+          movieDetails = details[0];
+          responseObj.details  = details[0];
+          responseObj.seats    = seats;
+          return dfdResult.resolve( responseObj );
+        },
+        error     : function(response) {
+          console.log("Error in ajax call.");
+          return dfdResult.reject( responseObj );
+        }
+    });
+  };
+  
+  var onError = function( response ) {
+    return dfdResult.reject( response );
+  };
+  
+  $.ajax({
+      url       : Application.api+"seats",
+      type      : "GET",
+      dataType  : 'json',
+      data      : params,
+      success   : onSuccess,
+      error     : onError
+  });
+  
+  return dfdResult;
+};
+
+var logout = function() {
+  localStorage.removeItem('userId');
+  localStorage.removeItem('name');
+  localStorage.removeItem('booking');
+  window.location.hash = "#login";
+  window.location.hash = "#login";
+  return false;
 };
 
 var afterRender = function() {
 	setTimeout( function() {
-		//case I: Show from starting
-		//init();
-
-		//Case II: If already booked
-		// var bookedSeats = [5, 10, 25];
-		// init(bookedSeats);
-		init([ "A-1", "B-10", "C-5" ]);
+		// init([ "A-1", "B-10", "C-5" ]);
+    init(bookedSeats);
 	}, 1000);
 };
 
@@ -38,9 +105,10 @@ var init = function (reservedSeat) {
     	rowChar = rowArr[i];
 
         for (var j = 0, jLen=settings.cols; j<jLen; j++) {
-            // seatNo = (i + j * settings.rows + 1);
-            // className = settings.seatCss + ' ' + settings.rowCssPrefix + i.toString() + ' ' + settings.colCssPrefix + j.toString();
             seatNo = j + 1;
+            if(seatNo < 10) {
+              seatNo = "0"+seatNo.toString();
+            }
             className = settings.seatCss + ' ' + settings.rowCssPrefix + rowChar + ' ' + settings.colCssPrefix + seatNo.toString();
             
             if( $.isArray(reservedSeat)  )
@@ -55,10 +123,13 @@ var init = function (reservedSeat) {
         }
     }
     $('#place').html(str.join(''));
+
+    $(".logout").click(logout);
+    $(".seat").click(seatClicked);
+    $(".submitbooking").click(submitBooking);
 };
 
 var seatClicked = function( ev ) {
-  console.log("HERE", ev);
 	var $seat = $(ev.target),
 		targetClasses = "",
 		seatRow = "",
@@ -83,10 +154,69 @@ var seatClicked = function( ev ) {
 	seatCol = targetClasses.substring( charPos+4, spacePos );
 };
 
+var submitBooking = function() {
+  var that = this;
+
+  var selectedSeats = $(".selectingSeat"),
+      bookedSeats   = [],
+      params        = {};
+
+  if(selectedSeats.length === 0) {
+    alert("Please select at least one seat.");
+    return;
+  }
+
+  for( var i=0, iLen=selectedSeats.length; i<iLen; i++ ) {
+    var classArray = $(selectedSeats[i]).attr('class').split(" ");
+    var row = classArray[1].substring(4);
+    var col = classArray[2].substring(4);
+    var seat = "";
+
+    if(Number(row) < 10) {
+      row = "0" + row;
+    }
+
+    seat = row + "-" + col;
+    bookedSeats.push(seat);
+  }
+
+  var hash    = window.location.hash,
+      temp    = hash.indexOf('?sid='),
+      sid     = hash.substring(temp+5);
+
+  params = {
+    sid   : sid,
+    seats : bookedSeats,
+    c_id  : 1
+  };
+
+  $.ajax({
+      url       : Application.api+"book",
+      type      : "POST",
+      dataType  : 'json',
+      data      : params,
+      success   : function(response) {
+        var tempObj = {
+          movieDetails  : movieDetails,
+          bookedSeats   : params.seats
+        };
+        localStorage.booking = "";
+        localStorage.booking = JSON.stringify(tempObj);
+        window.location.hash = "#/confirmation";
+      },
+      error     : function(response) {
+        console.log("in error : ", response);
+      }
+  });
+};
+
 module.exports = View.extend({
-    id: 'booking-view',
-    events: events,
-    afterRender: afterRender,
-    template: template,
-    seatClicked: seatClicked
+    id            : 'booking-view',
+    events        : events,
+    getRenderData : getRenderData,
+    afterRender   : afterRender,
+    template      : template,
+    seatClicked   : seatClicked,
+    submitBooking : submitBooking,
+    bookedSeats   : bookedSeats
 })

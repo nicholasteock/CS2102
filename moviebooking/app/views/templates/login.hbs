@@ -6,11 +6,11 @@
 		<div class="container login-form">
 			<h4>Please login to continue</h4>
 			<form role="form" class="col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-				<input type="email" class="form-control" id="login-email" placeholder="Email">
-				<input type="password" class="form-control" id="login-password" placeholder="Password">
-				<a href="/#/listing">
-					<button type="button" class="btn btn-default">Submit</button>
-				</a>
+				<h4 class="text-danger login-error"></h4>
+				<input type="email" class="form-control input-lg" id="login-email" placeholder="Email" value="nick@test.com">
+				<input type="password" class="form-control input-lg" id="login-password" placeholder="Password" value="1234">
+				<button type="button" class="btn btn-lg btn-block btn-primary login-submit">Login</button>
+				<button type="button" class="btn btn-lg btn-block btn-success login-register">Register</button>
 			</form>
 		</div>
 	</div>

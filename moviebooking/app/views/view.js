@@ -11,9 +11,24 @@ module.exports = Backbone.View.extend({
     getRenderData: function(){},
     
     render: function(){
-        this.$el.html(this.template(this.getRenderData()))
-        this.afterRender()
-        return this
+        var that = this;
+
+        $.when(this.getRenderData()).done(
+            function(data){
+                $("body").html(that.template(data));
+                that.afterRender();
+                return that;
+        }).fail(
+            function(data){
+                $("body").html(this.template(data));
+                that.afterRender();
+                return that;
+        });
+
+
+        // this.$el.html(this.template(this.getRenderData()));
+        // this.afterRender();
+        // return this;
     },
     
     afterRender: function(){}
