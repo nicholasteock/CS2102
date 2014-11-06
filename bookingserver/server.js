@@ -50,7 +50,7 @@ router.get('/movielisting', function( req, res ) {
 		res.send( response );
 	}
 
-	movies.listing(req.query, reply);
+	movies.listing(req.body, reply);
 });
 
 router.get('/movie', function( req, res ) {
