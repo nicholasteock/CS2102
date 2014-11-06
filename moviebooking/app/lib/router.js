@@ -8,7 +8,8 @@ module.exports 	= Backbone.Router.extend({
         'listing' 		: 'listing',
         'movie' 		: 'movie',
         'booking' 		: 'booking',
-        'confirmation' 	: 'confirmation'
+        'confirmation' 	: 'confirmation',
+        'edit'          : 'edit'
     },
     
     login: function() {
@@ -35,4 +36,7 @@ module.exports 	= Backbone.Router.extend({
         $('body').html(application.confirmationView.render())
     },
 
+    edit: function() {
+        $('body').html(application.editView.render())
+    },
 })

@@ -10,8 +10,7 @@ var afterRender = function() {
 	localStorage.removeItem("booking");
 
 	if(localStorage.userId != undefined && localStorage.name != undefined) {
-		window.location.hash 	= "#listing";
-		window.location.hash 	= "#listing";
+		Application.router.navigate('listing', {trigger: true});
 		return false;
 	}
 

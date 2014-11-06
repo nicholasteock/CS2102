@@ -4,13 +4,12 @@ var View     = require('./view'),
 var getRenderData = function() {
 	if(localStorage.userId == undefined || localStorage.name == undefined) {
 		alert("Please log in to continue");
-		window.location.hash = "#login";
-		window.location.hash = "#login";
+		Application.router.navigate('login', {trigger: true});
 		return false;
 	}
 
 	var	dfdResult = $.Deferred();
-		
+
 	var onSuccess = function( response ) {
 		return dfdResult.resolve( response );
 	};
@@ -46,8 +45,7 @@ var logout = function() {
 	localStorage.removeItem('userId');
 	localStorage.removeItem('name');
 	localStorage.removeItem('booking');
-	window.location.hash = "#login";
-	window.location.hash = "#login";
+	Application.router.navigate('login', {trigger: true});
 	return false;
 };
 

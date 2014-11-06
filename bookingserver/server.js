@@ -85,6 +85,14 @@ router.post('/book', function( req, res ) {
 	movies.book(req.body, reply);
 });
 
+router.post('/bookings', function( req, res ) {
+	function reply( response ) {
+		res.send( response );
+	}
+
+	movies.getBookings(req.body, reply);
+});
+
 /*****************************************************************************/
 
 // Add headers

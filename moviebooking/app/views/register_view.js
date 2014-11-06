@@ -41,8 +41,7 @@ var registerSubmit = function() {
 			success		: function(response) {
 				localStorage.userId = response.data[0].userId;
 				localStorage.name 	= response.data[0].name;
-				window.location.hash = "#listing";
-				window.location.hash = "#listing";
+				Application.router.navigate('listing', {trigger: true});
 				return false;
 			},
 			error		: function(response) {

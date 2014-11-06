@@ -13,8 +13,7 @@ var movieDetails;
 var getRenderData = function() {
   if(localStorage.userId == undefined || localStorage.name == undefined) {
     alert("Please log in to continue");
-    window.location.hash = "#login";
-    window.location.hash = "#login";
+    Application.router.navigate('login', {trigger: true});
     return false;
   }
 
@@ -72,8 +71,7 @@ var logout = function() {
   localStorage.removeItem('userId');
   localStorage.removeItem('name');
   localStorage.removeItem('booking');
-  window.location.hash = "#login";
-  window.location.hash = "#login";
+  Application.router.navigate('login', {trigger: true});
   return false;
 };
 
@@ -182,12 +180,13 @@ var submitBooking = function() {
 
   var hash    = window.location.hash,
       temp    = hash.indexOf('?sid='),
-      sid     = hash.substring(temp+5);
+      sid     = hash.substring(temp+5),
+      c_id    = Number(localStorage.userId);
 
   params = {
     sid   : sid,
     seats : bookedSeats,
-    c_id  : 1
+    c_id  : c_id
   };
 
   $.ajax({
@@ -202,7 +201,7 @@ var submitBooking = function() {
         };
         localStorage.booking = "";
         localStorage.booking = JSON.stringify(tempObj);
-        window.location.hash = "#/confirmation";
+        Application.router.navigate('confirmation', {trigger: true});
       },
       error     : function(response) {
         console.log("in error : ", response);

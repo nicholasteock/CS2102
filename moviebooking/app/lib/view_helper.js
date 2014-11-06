@@ -162,7 +162,7 @@ Handlebars.registerHelper('moviedetails', function(detailsObject, options) {
 	var subtitles = detailsObject.subtitles == "None" ? "" : " with " + detailsObject.subtitles + " subtitles";
 
 	var output 	= 	'<div class="col-sm-12 col-md-5 col-lg-5 movie-poster">'+
-					'<img src="img/'+detailsObject.MID+'.jpg">'+
+					'<img src="img/'+detailsObject.mid+'.jpg">'+
 					// '<img src="img/'+detailsObject.mid+'.jpg">'+
 					'</div>'+
 					'<div class="col-sm-12 col-md-5 col-lg-5 movie-details">'+
