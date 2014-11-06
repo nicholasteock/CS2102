@@ -60,9 +60,9 @@ var newuser = function() {
 			data 		: params,
 			success		: function(response) {
 				$(".newuser-error").html("New user "+params.name+" added to system.");
-				$("#newuser-email").val(""),
-				$("#newuser-name").val(""),
-				$("#newuser-password").val(""),
+				$("#newuser-email").val("");
+				$("#newuser-name").val("");
+				$("#newuser-password").val("");
 				return false;
 			},
 			error		: function(response) {
