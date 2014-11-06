@@ -23,7 +23,7 @@ var getRenderData = function() {
 	var data = hash.substring(hash.indexOf("?"));
 
 	$.ajax({
-			url 		: Application.api+"movielisting"+data,
+			url 		: Application.api+"movielisting?"+data,
 			type 		: "GET",
 			dataType	: 'json',
 			success		: onSuccess,

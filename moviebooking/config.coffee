@@ -15,6 +15,8 @@ exports.config =
         'test/javascripts/test-vendor.js': /^test[\\/](?=vendor)/
       order:
         after: [
+          'vendor/scripts/jQuery.XDomainRequest.js'
+
           # popover requires tooltip
           'vendor/scripts/bootstrap/tooltip.js'
           'vendor/scripts/bootstrap/popover.js'
