@@ -45,7 +45,7 @@ router.post('/login', function( req, res ) {
 	movies.login(req.body, reply);
 });
 
-router.get('/movielisting', function( req, res ) {
+router.post('/movielisting', function( req, res ) {
 	function reply( response ) {
 		res.send( response );
 	}
