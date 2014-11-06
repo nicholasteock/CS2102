@@ -28,7 +28,8 @@ var registerSubmit = function() {
 		params 		= {
 						email 		: email,
 						name 		: name,
-						password 	: password
+						password 	: password,
+						userType 	: "1"
 					};
 
 	if(!validate(params)) return;

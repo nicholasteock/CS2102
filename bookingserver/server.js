@@ -93,6 +93,14 @@ router.post('/bookings', function( req, res ) {
 	movies.getBookings(req.body, reply);
 });
 
+router.post('/addmovie', function( req, res ) {
+	function reply( response ) {
+		res.send( response );
+	}
+
+	movies.addmovie(req.body, reply);
+});
+
 /*****************************************************************************/
 
 // Add headers

@@ -1,5 +1,5 @@
 var View     = require('./view'),
-	template = require('./templates/edit')
+	template = require('./templates/admin')
 
 var getRenderData = function() {
 	if(localStorage.userId == undefined || localStorage.name == undefined) {
@@ -8,30 +8,11 @@ var getRenderData = function() {
 		return false;
 	}
 
-	var	dfdResult = $.Deferred();
-
-	var onSuccess = function( response ) {
-		return dfdResult.resolve( response );
-	};
-	
-	var onError = function( response ) {
-		return dfdResult.reject( response );
-	};
-
-	var data = {
-		userId: localStorage.userId
-	};
-
-	$.ajax({
-			url 		: Application.api+"bookings",
-			type 		: "POST",
-			dataType	: 'json',
-			data 		: data,
-			success		: onSuccess,
-			error		: onError
-	});
-	
-	return dfdResult;
+	if(localStorage.userType == undefined || localStorage.userType != 0) {
+		alert("You do not have admin privileges.");
+		Application.router.navigate('listing', {trigger: true});
+		return false;
+	}
 };
 
 var logout = function() {
@@ -51,7 +32,7 @@ var events = {
 };
 
 module.exports = View.extend({
-    id 				: 'edit-view',
+    id 				: 'admin-view',
     events 			: events,
     getRenderData 	: getRenderData,
     afterRender 	: afterRender,

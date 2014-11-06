@@ -12,6 +12,7 @@ var getRenderData = function() {
 var logout = function() {
 	localStorage.removeItem('userId');
 	localStorage.removeItem('name');
+	localStorage.removeItem('userType');
 	localStorage.removeItem('booking');
 	Application.router.navigate('login', {trigger: true});
 	return false;

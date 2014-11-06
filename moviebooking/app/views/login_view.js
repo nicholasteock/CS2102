@@ -51,6 +51,7 @@ var login = function() {
 					$(".login-error").html("");
 					localStorage.userId 	= response.data[0].userId;
 					localStorage.name 		= response.data[0].name;
+					localStorage.userType 	= response.data[0].userType;
 					// window.location.hash 	= "#listing";
 					// window.location.hash 	= "#listing";
 					Application.router.navigate('listing', {trigger: true});

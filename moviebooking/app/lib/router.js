@@ -9,7 +9,10 @@ module.exports 	= Backbone.Router.extend({
         'movie' 		: 'movie',
         'booking' 		: 'booking',
         'confirmation' 	: 'confirmation',
-        'edit'          : 'edit'
+        'edit'          : 'edit',
+        'admin'         : 'admin',
+        'adduser'       : 'adduser',
+        'addmovie'      : 'addmovie'
     },
     
     login: function() {
@@ -38,5 +41,17 @@ module.exports 	= Backbone.Router.extend({
 
     edit: function() {
         $('body').html(application.editView.render())
+    },
+
+    admin: function() {
+        $('body').html(application.adminView.render())
+    },
+
+    adduser: function() {
+        $('body').html(application.adduserView.render())
+    },
+
+    addmovie: function() {
+        $('body').html(application.addmovieView.render())
     },
 })
