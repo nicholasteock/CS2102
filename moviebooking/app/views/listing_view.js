@@ -20,12 +20,16 @@ var getRenderData = function() {
 	};
 
 	var hash = window.location.hash;
-	var data = hash.substring(hash.indexOf("?"));
+	// var data = hash.substring(hash.indexOf("?"));
+	// var data = {
+	// 	"languages": "English"
+	// };
 
 	$.ajax({
-			url 		: Application.api+"movielisting?"+data,
+			url 		: Application.api+"movielisting",
 			type 		: "GET",
 			dataType	: 'json',
+			data 		: data,
 			success		: onSuccess,
 			error		: onError
 	});

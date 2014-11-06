@@ -45,15 +45,16 @@ var login = function() {
 			dataType	: 'json',
 			data 		: params,
 			success		: function(response) {
-				if(response.data.length === 0) {
+				if(response.data == undefined || response.data.length === 0) {
 					$(".login-error").html("Invalid credentials. Please try again.");
 				}
 				else {
 					$(".login-error").html("");
 					localStorage.userId 	= response.data[0].userId;
 					localStorage.name 		= response.data[0].name;
-					window.location.hash 	= "#listing";
-					window.location.hash 	= "#listing";
+					// window.location.hash 	= "#listing";
+					// window.location.hash 	= "#listing";
+					Application.router.navigate('listing', {trigger: true});
 				}
 				return false;
 			},
