@@ -250,4 +250,94 @@ Handlebars.registerHelper('confirmation', function(options) {
 	return output;
 });
 
+/******************************************************************************
+ Admin page users Helper
+******************************************************************************/
 
+Handlebars.registerHelper('users', function(userlist, options) {
+	var type 	= 	"",
+		user 	= 	"",
+		output 	= 	'<table class="table table-hover">'+
+					'<thead>'+
+					'<tr>'+
+					'<th>Name</th>'+
+					'<th>Email</th>'+
+					'<th>Password</th>'+
+					'<th>Type</th>'+
+					'<th>Edit</th>'+
+					'<th>Remove</th>'+
+					'</tr>'+
+					'</thead>'+
+					'<tbody>';
+
+	for(var i=0, iLen=userlist.length; i<iLen; i++) {
+		user = 	'<tr>'+
+				'<td>'+userlist[i].c_name+'</td>'+
+				'<td>'+userlist[i].c_email+'</td>'+
+				'<td>'+userlist[i].c_pwd+'</td>';
+
+		if(userlist[i].c_type == 0) {
+			type = "Admin";
+		}
+		else {
+			type = "Customer";
+		}
+
+		user += '<td>'+type+'</td>'+
+				'<td><button id="edituser-'+userlist[i].c_id+'" type="button" class="btn btn-sm btn-warning edituser">Edit</button></td>'+
+				'<td><button id="removeuser-'+userlist[i].c_id+'" type="button" class="btn btn-sm btn-danger removeuser">Remove</button></td></tr>';
+		output += user;
+	}
+	
+	output += '</tbody></table>';
+
+	return output;
+});
+
+/******************************************************************************
+ Admin page bookings Helper
+******************************************************************************/
+
+Handlebars.registerHelper('bookings', function(bookinglist, options) {
+	var type 	= 	"",
+		booking = 	"",
+		output 	= 	'<table class="table table-hover">'+
+					'<thead>'+
+					'<tr>'+
+					'<th>Movie</th>'+
+					'<th>Venue</th>'+
+					'<th>Date</th>'+
+					'<th>Time</th>'+
+					'<th>Seat</th>'+
+					'<th>Ticket#</th>'+
+					'<th>Edit</th>'+
+					'<th>Remove</th>'+
+					'</tr>'+
+					'</thead>'+
+					'<tbody>';
+
+	for(var i=0, iLen=bookinglist.length; i<iLen; i++) {
+		var tempDate 	= new Date(bookinglist[i].showdate),
+			dateString 	= tempDate.toDateString(),
+			day 		= dateString.substr(0,3),
+			month 		= dateString.substr(4,3),
+			dayNum 		= dateString.substr(8,2),
+			time 		= bookinglist[i].showtime.substring(0,5);
+
+		booking = 	'<tr>'+
+					'<td>'+bookinglist[i].title+'</td>'+
+					'<td>'+bookinglist[i].cinema+'</td>'+
+					'<td>'+dayNum+" "+month+", "+day+'</td>'+
+					'<td>'+time+'</td>'+
+					'<td>'+bookinglist[i].seatnum+'</td>'+
+					'<td>'+bookinglist[i].ticketnum+'</td>'+
+					'<td><button id="editbooking-'+bookinglist[i].ticketnum+'" type="button" class="btn btn-sm btn-warning editbooking">Edit</button></td>'+
+					'<td><button id="removebooking-'+bookinglist[i].ticketnum+'" type="button" class="btn btn-sm btn-danger removebooking">Remove</button></td></tr>';
+
+		output += booking;
+	}
+	
+	output += '</tbody></table>';
+
+	return output;
+});

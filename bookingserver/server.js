@@ -107,7 +107,23 @@ router.post('/admininfo', function( req, res ) {
 	}
 
 	movies.adminpanelInfo(req.body, reply);
-})
+});
+
+router.post('/removeuser', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.removeuser(req.body, reply);
+});
+
+router.post('/removebooking', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.removebooking(req.body, reply);
+});
 
 /*****************************************************************************/
 
