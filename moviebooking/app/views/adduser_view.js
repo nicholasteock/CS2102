@@ -24,6 +24,11 @@ var logout = function() {
 	return false;
 };
 
+var adminpanel = function() {
+	Application.router.navigate('admin', {trigger: true});
+	return false;
+};
+
 var validate = function(params) {
 	var email 		= params.email,
 		name 		= params.name,
@@ -43,7 +48,7 @@ var newuser = function() {
 	var email 		= $("#newuser-email").val(),
 		name 		= $("#newuser-name").val(),
 		password 	= $("#newuser-password").val(),
-		isAdmin 	= $('#check_id').is(":checked") ? 0 : 1,
+		isAdmin 	= $('#newuser-isadmin').is(":checked") ? 0 : 1,
 		params 		= {
 						email 		: email,
 						name 		: name,
@@ -71,9 +76,16 @@ var newuser = function() {
 	});
 };
 
+var cancel = function() {
+	Application.router.navigate('listing', {trigger: true});
+	return false;
+};
+
 var afterRender = function(){
 	$(".logout").click(logout);
+	$(".adminpanel").click(adminpanel);
 	$(".newuser-submit").click(newuser);
+	$(".newuser-cancel").click(cancel);
 };
 
 var events = {

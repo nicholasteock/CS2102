@@ -121,8 +121,7 @@ var init = function (reservedSeat) {
         }
     }
     $('#place').html(str.join(''));
-
-    $(".logout").click(logout);
+    
     $(".seat").click(seatClicked);
     $(".submitbooking").click(submitBooking);
 };

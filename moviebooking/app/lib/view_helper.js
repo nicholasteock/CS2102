@@ -5,12 +5,15 @@
 Handlebars.registerHelper( 'navbar', function(options) {
 	var output = 	'<nav class="navbar navbar-inverse" role="navigation">'+
 					'<div class="container">'+
-					'<div class="pull-right">'+
-					'<button type="button" class="btn btn-default navbar-btn login hide">Login</button>'+
-					'<button type="button" class="btn btn-default navbar-btn register hide">Register</button>'+
-					'<div class="navbar-text">Hi, '+localStorage.name+'</div>'+
-					'<button type="button" class="btn btn-default navbar-btn logout">Logout</button>'+
-					'</div>'+
+					'<ul class="nav navbar-nav">'+
+					'<li><button type="button" class="btn btn-default navbar-btn adminpanel">Admin Panel</button></li>'+
+					'</ul>'+
+					'<ul class="nav navbar-nav navbar-right">'+
+					'<li><button type="button" class="btn btn-default navbar-btn login hide">Login</button></li>'+
+					'<li><button type="button" class="btn btn-default navbar-btn register hide">Register</button></li>'+
+					'<li><div class="navbar-text">Hi, '+localStorage.name+'</div></li>'+
+					'<li><button type="button" class="btn btn-default navbar-btn logout">Logout</button></li>'+
+					'</ul>'+
 					'</div>'+
 					'</nav>';
 	return output;

@@ -101,6 +101,14 @@ router.post('/addmovie', function( req, res ) {
 	movies.addmovie(req.body, reply);
 });
 
+router.post('/admininfo', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.adminpanelInfo(req.body, reply);
+})
+
 /*****************************************************************************/
 
 // Add headers

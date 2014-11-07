@@ -50,6 +50,11 @@ var logout = function() {
 	return false;
 };
 
+var adminpanel = function() {
+	Application.router.navigate('admin', {trigger: true});
+	return false;
+};
+
 var languageSelected = function(ev) {
 	$("#filterLanguage").html(ev.target.text);
 };
@@ -158,6 +163,7 @@ var afterRender = function(){
 	}
 
 	$(".logout").click(logout);
+	$(".adminpanel").click(adminpanel);
 	$("#filterReset").click(resetFilter);
 	$("#filterSubmit").click(submitFilter);
 	$(".languageDropdown li").click(languageSelected);

@@ -43,8 +43,14 @@ var logout = function() {
 	return false;
 };
 
+var adminpanel = function() {
+	Application.router.navigate('admin', {trigger: true});
+	return false;
+};
+
 var afterRender = function(){
 	$(".logout").click(logout);
+	$(".adminpanel").click(adminpanel);
 };
 
 var events = {

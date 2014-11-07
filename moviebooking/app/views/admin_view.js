@@ -13,6 +13,26 @@ var getRenderData = function() {
 		Application.router.navigate('listing', {trigger: true});
 		return false;
 	}
+
+	var	dfdResult = $.Deferred();
+
+	var onSuccess = function( response ) {
+		return dfdResult.resolve( response );
+	};
+	
+	var onError = function( response ) {
+		return dfdResult.reject( response );
+	};
+
+	$.ajax({
+			url 		: Application.api+"admininfo",
+			type 		: "POST",
+			dataType	: 'json',
+			success		: onSuccess,
+			error		: onError
+	});
+	
+	return dfdResult;
 };
 
 var logout = function() {
@@ -24,8 +44,26 @@ var logout = function() {
 	return false;
 };
 
+var adminpanel = function() {
+	Application.router.navigate('admin', {trigger: true});
+	return false;
+};
+
+var adduser = function() {
+	Application.router.navigate('adduser', {trigger: true});
+	return false;
+};
+
+var addmovie = function() {
+	Application.router.navigate('addmovie', {trigger: true});
+	return false;
+};
+
 var afterRender = function(){
 	$(".logout").click(logout);
+	$(".adminpanel").click(adminpanel);
+	$(".adduser").click(adduser);
+	$(".addmovie").click(addmovie);
 };
 
 var events = {

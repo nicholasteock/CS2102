@@ -25,7 +25,7 @@ Application = {
         this.editView           = new EditView();
         this.adminView          = new AdminView();
         this.adduserView        = new AdduserView();
-        this.addMovieView 		= new AddmovieView();
+        this.addmovieView 		= new AddmovieView();
         this.router   			= new Router();
                 
         if (typeof Object.freeze === 'function') Object.freeze(this)
