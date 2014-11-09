@@ -117,6 +117,14 @@ router.post('/userinfo', function( req, res ) {
 	movies.userInfo(req.body, reply);
 });
 
+router.post('/edituser', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.editUser(req.body, reply);
+});
+
 router.post('/removeuser', function( req, res ) {
 	function reply( response ) {
 		res.send(response);
