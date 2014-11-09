@@ -109,6 +109,14 @@ router.post('/admininfo', function( req, res ) {
 	movies.adminpanelInfo(req.body, reply);
 });
 
+router.post('/userinfo', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.userInfo(req.body, reply);
+});
+
 router.post('/removeuser', function( req, res ) {
 	function reply( response ) {
 		res.send(response);
