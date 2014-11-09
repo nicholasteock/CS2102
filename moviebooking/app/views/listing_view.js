@@ -162,6 +162,9 @@ var afterRender = function(){
 		}
 	}
 
+	$(".loadingSpinner").addClass("hide");
+	$(".filterContainer").removeClass("hide");
+	$(".movielistingContainer").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
 	$("#filterReset").click(resetFilter);

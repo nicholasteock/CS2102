@@ -52,7 +52,7 @@ Handlebars.registerHelper( 'movielisting', function(listingObject, options) {
 					listingObject[i].TITLE+
 					'</div>'+
 					'<div class="col-md-5 col-lg-5 listing-left">'+
-					'<img class="listing-thumbnail" src="img/thumbs/'+listingObject[i].MID+'.jpg">'+
+					'<img class="listing-thumbnail" src="img/thumbs/'+listingObject[i].MID+'.jpg" alt="'+listingObject[i].TITLE+'">'+
 					'</div>'+
 					'<div class="col-md-7 col-lg-7 listing-right">'+
 					'<div class="listing-synopsis">'+
@@ -176,7 +176,7 @@ Handlebars.registerHelper('moviedetails', function(detailsObject, options) {
 	var subtitles = detailsObject.subtitles == "None" ? "" : " with " + detailsObject.subtitles + " subtitles";
 
 	var output 	= 	'<div class="col-sm-12 col-md-5 col-lg-5 movie-poster">'+
-					'<img src="img/'+detailsObject.mid+'.jpg">'+
+					'<img src="img/'+detailsObject.mid+'.jpg" alt="'+detailsObject.title+'">'+
 					// '<img src="img/'+detailsObject.mid+'.jpg">'+
 					'</div>'+
 					'<div class="col-sm-12 col-md-5 col-lg-5 movie-details">'+
@@ -351,4 +351,54 @@ Handlebars.registerHelper('bookings', function(bookinglist, options) {
 	output += '</tbody></table>';
 
 	return output;
+});
+
+/******************************************************************************
+ Edit User Helper
+******************************************************************************/
+
+Handlebars.registerHelper('edituser', function(userObject, options) {
+
+	var output = 	'<div class="container edituser-form">'+
+					'<div class="text-danger edituser-error"></div>'+
+					'<br>'+
+					'<div class="col-sm-6 col-sm-offset-3">'+
+					'<form class="form-horizontal" role="form">'+
+					'<div class="form-group">'+
+					'<label for="edituser-email" class="col-sm-3 control-label">Email</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="email" class="form-control input-lg" id="edituser-email" placeholder="Email" value="'+userObject[0].c_email+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="edituser-name" class="col-sm-3 control-label">Name</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="text" class="form-control input-lg" id="edituser-name" placeholder="Name" value="'+userObject[0].c_name+'">'+
+					'<span class="text-danger"></span>'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="edituser-password" class="col-sm-3 control-label">Password</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="password" class="form-control input-lg" id="edituser-password" placeholder="Password" value="'+userObject[0].c_pwd+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<div class="col-sm-12"><input type="checkbox" id="edituser-isadmin"';
+
+		if( userObject[0].c_type==0 ) {
+			output += " checked";
+		}
+
+		output += 	'> Administrator'+
+					'</div></div>'+
+					'<div class="form-group">'+
+					'<div class="col-sm-2 col-sm-offset-4">'+
+					'<button type="button" class="btn btn-lg btn-danger edituser-cancel">Cancel</button>'+
+					'</div><div class="col-sm-6">'+
+					'<button type="button" id="'+userObject[0].c_id+'" class="btn btn-lg btn-primary edituser-submit">Update</button>'+
+					'</div></div></div></form></div></div>';
+
+	return output;
+
 });

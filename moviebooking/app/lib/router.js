@@ -12,6 +12,7 @@ module.exports 	= Backbone.Router.extend({
         'edit'          : 'edit',
         'admin'         : 'admin',
         'adduser'       : 'adduser',
+        'edituser'      : 'edituser',
         'addmovie'      : 'addmovie'
     },
     
@@ -49,6 +50,10 @@ module.exports 	= Backbone.Router.extend({
 
     adduser: function() {
         $('body').html(application.adduserView.render())
+    },
+
+    edituser: function() {
+        $('body').html(application.edituserView.render())
     },
 
     addmovie: function() {

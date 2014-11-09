@@ -11,6 +11,7 @@ Application = {
             EditView            = require('views/edit_view')
             AdminView           = require('views/admin_view')
             AdduserView         = require('views/adduser_view')
+            EdituserView         = require('views/edituser_view')
         	AddmovieView 		= require('views/addmovie_view')
             Router   			= require('lib/router');
         
@@ -25,6 +26,7 @@ Application = {
         this.editView           = new EditView();
         this.adminView          = new AdminView();
         this.adduserView        = new AdduserView();
+        this.edituserView       = new EdituserView();
         this.addmovieView 		= new AddmovieView();
         this.router   			= new Router();
                 

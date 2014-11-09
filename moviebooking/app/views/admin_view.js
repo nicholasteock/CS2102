@@ -1,5 +1,5 @@
 var View     = require('./view'),
-	template = require('./templates/admin')
+	template = require('./templates/admin');
 
 var getRenderData = function() {
 	if(localStorage.userId == undefined || localStorage.name == undefined) {
@@ -59,9 +59,12 @@ var addmovie = function() {
 	return false;
 };
 
-var edituser = function() {
+var edituser = function(ev) {
+	var temp 	= ev.target.id;
+		userId 	= temp.substring(9);
 
-}
+	Application.router.navigate('edituser?userId='+userId, {trigger: true});
+};
 
 var removeuser = function(ev) {
 	var temp 		= ev.target.id,
@@ -107,9 +110,12 @@ var removebooking = function(ev) {
 				return;
 			}
 	});
-}
+};
 
 var afterRender = function(){
+	$(".loadingSpinner").addClass("hide");
+	$(".users-management").removeClass("hide");
+	$(".movie-management").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
 	$(".adduser").click(adduser);
