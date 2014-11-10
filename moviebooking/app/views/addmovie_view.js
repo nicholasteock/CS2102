@@ -92,7 +92,7 @@ var validate = function(params) {
 	return true;
 };
 
-var editcancel = function() {
+var addcancel = function() {
 	Application.router.navigate('admin', {trigger: true});
 };
 
@@ -102,7 +102,7 @@ var afterRender = function() {
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
 	$(".addmovie-submit").click(addmovie);
-	$(".addmovie-cancel").click(editcancel);
+	$(".addmovie-cancel").click(addcancel);
 }
 
 module.exports = View.extend({

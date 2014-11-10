@@ -476,7 +476,7 @@ Handlebars.registerHelper('editmovie', function(movieObject, options) {
 					'<div class="form-group">'+
 					'<label for="editmovie-genre" class="col-sm-3 control-label">Genre</label>'+
 					'<div class="col-sm-9">'+
-					'<input type="text" class="form-control input-lg" id="editmovie-title" placeholder="Genre" value="'+movieObject.genre+'">'+
+					'<input type="text" class="form-control input-lg" id="editmovie-genre" placeholder="Genre" value="'+movieObject.genre+'">'+
 					'</div>'+
 					'</div>'+
 					'<div class="form-group">'+
@@ -546,9 +546,9 @@ Handlebars.registerHelper('editmovie', function(movieObject, options) {
 				'</div>'+
 				'</div>'+
 				'<div class="form-group">'+
-				'<label for="editmovie-language" class="col-sm-3 control-label">Language</label>'+
+				'<label for="editmovie-languages" class="col-sm-3 control-label">Language</label>'+
 				'<div class="col-sm-9">'+
-				'<select id="editmovie-language" class="form-control input-lg">';
+				'<select id="editmovie-languages" class="form-control input-lg">';
 
 	switch(movieObject.languages) {
 		case 'English':
