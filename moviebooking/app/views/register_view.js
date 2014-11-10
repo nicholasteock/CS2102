@@ -15,6 +15,8 @@ var validate = function(params) {
 
 	if(email.length==0 || name.length==0 || password.length==0) {
 		$(".register-error").html("*All fields are required.");
+		$(".loginSpinner").addClass("hide");
+		$(".register-submit").removeClass("hide");
 		return false;
 	}
 
@@ -22,6 +24,9 @@ var validate = function(params) {
 };
 
 var registerSubmit = function() {
+	$(".loginSpinner").removeClass("hide");
+	$(".register-submit").addClass("hide");
+
 	var email 		= $("#register-email").val(),
 		name 		= $("#register-name").val(),
 		password 	= $("#register-password").val(),
@@ -47,13 +52,20 @@ var registerSubmit = function() {
 			},
 			error		: function(response) {
 				alert("Error in registering user.");
+				$(".loginSpinner").addClass("hide");
+				$(".register-submit").removeClass("hide");
 			}
 	});
+};
+
+var registerCancel = function() {
+	Application.router.navigate('login', {trigger: true});
 };
 
 var afterRender = function() {
 	console.log("In register page");
 	$(".register-submit").click(registerSubmit);
+	$(".register-cancel").click(registerCancel);
 };
 
 
