@@ -1,47 +1,106 @@
-<section class="container newuser-panel">
+<section class="container addmovie-panel">
 	<div class="jumbotron text-center">
 		<h1>Add New Movie</h1>
-
-		<div class="container newuser-form">
-			<h4>Please fill in the following:</h4>
+		<div class="container addmovie-form">
+			<h4>Please fill in movie details:</h4>
 			<br>
-			<div class="text-danger newuser-error"></div>
+			<div class="text-danger addmovie-error"></div>
 			<br>
 			<div class="col-sm-6 col-sm-offset-3">
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<label for="newuser-email" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-10">
-						<input type="email" class="form-control input-lg" id="newuser-email" placeholder="Email">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="addmovie-email" class="col-sm-3 control-label">Title</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control input-lg" id="addmovie-title" placeholder="Title">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="newuser-name" class="col-sm-2 control-label">Name</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control input-lg" id="newuser-name" placeholder="Name">
-						<span class="text-danger"></span>
+					<div class="form-group">
+						<label for="addmovie-rating" class="col-sm-3 control-label">Rating</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control input-lg" id="addmovie-rating" placeholder="Rating">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="newuser-password" class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-10">
-						<input type="password" class="form-control input-lg" id="newuser-password" placeholder="Password">
+					<div class="form-group">
+						<label for="addmovie-director" class="col-sm-3 control-label">Director</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control input-lg" id="addmovie-director" placeholder="Director">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="newuser-isadmin" class="col-sm-2 control-label">This user is an admin.</label>
-					<div class="col-sm-10">
-						<input type="checkbox" class="form-control input-lg" id="newuser-password">
+					<div class="form-group">
+						<label for="addmovie-cast" class="col-sm-3 control-label">Cast</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control input-lg" id="addmovie-cast" placeholder="Cast">
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="btn btn-lg btn-success newuser-cancel">Cancel</button>
-						<button type="button" class="btn btn-lg btn-success newuser-submit">Register</button>
+					<div class="form-group">
+						<label for="addmovie-genre" class="col-sm-3 control-label">Genre</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control input-lg" id="addmovie-title" placeholder="Genre">
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="form-group">
+						<label for="addmovie-runtime" class="col-sm-3 control-label">Runtime</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control input-lg" id="addmovie-runtime" placeholder="Runtime">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addmovie-mdarating" class="col-sm-3 control-label">MDA Rating</label>
+						<div class="col-sm-9">
+							<select id="addmovie-mdarating" class="form-control input-lg">
+								<option value="UR" selected="selected">UR</option>
+								<option value="G">G</option>
+								<option value="PG13">PG13</option>
+								<option value="NC16">NC16</option>
+								<option value="M18">M18</option>
+								<option value="R21">R21</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addmovie-language" class="col-sm-3 control-label">Language</label>
+						<div class="col-sm-9">
+							<select id="addmovie-language" class="form-control input-lg">
+								<option value="None" selected="selected">None</option>
+								<option value="English">English</option>
+								<option value="Chinese">Chinese</option>
+								<option value="Japanese">Japanese</option>
+								<option value="Spanish">Spanish</option>
+								<option value="Hindu">Hindu</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addmovie-subtitles" class="col-sm-3 control-label">Subtitles</label>
+						<div class="col-sm-9">
+							<select id="addmovie-subtitles" class="form-control input-lg">
+								<option value="None" selected="selected">None</option>
+								<option value="English">English</option>
+								<option value="Chinese">Chinese</option>
+								<option value="Japanese">Japanese</option>
+								<option value="Spanish">Spanish</option>
+								<option value="Hindu">Hindu</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addmovie-synopsis" class="col-sm-3 control-label">Synopsis</label>
+						<div class="col-sm-9">
+							<textarea class="form-control input-lg" rows="7" id="addmovie-synopsis" placeholder="Synopsis"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 col-sm-offset-4">
+							<button type="button" class="btn btn-lg btn-danger addmovie-cancel">Cancel</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-lg btn-primary addmovie-submit">Update</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
-<section>
+</section>				
+
+
