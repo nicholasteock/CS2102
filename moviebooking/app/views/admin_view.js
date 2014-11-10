@@ -119,7 +119,28 @@ var removeuser = function(ev) {
 				return;
 			}
 	});
-}
+};
+
+var removemovie = function(ev) {
+	var temp 		= ev.target.id,
+		userId 		= temp.substring(12);
+		params 		= { mid: mid };
+
+	$.ajax({
+			url 		: Application.api+"removemovie",
+			type 		: "POST",
+			dataType	: 'json',
+			data 		: params,
+			success		: function(response) {
+				$(ev.target).parent().parent().remove();
+				return;
+			},
+			error		: function(response) {
+				console.log("Error in removemovie, response :", response);
+				return;
+			}
+	});
+};
 
 var editbooking = function() {
 	
@@ -157,6 +178,7 @@ var afterRender = function(){
 	$(".edituser").click(edituser);
 	$(".editmovie").click(editmovie);
 	$(".removeuser").click(removeuser);
+	$(".removemovie").click(removemovie);
 	$(".editbooking").click(editbooking);
 	$(".removebooking").click(removebooking);
 };
