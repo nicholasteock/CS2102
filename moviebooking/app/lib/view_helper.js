@@ -354,6 +354,37 @@ Handlebars.registerHelper('bookings', function(bookinglist, options) {
 });
 
 /******************************************************************************
+ Admin page movies Helper
+******************************************************************************/
+
+Handlebars.registerHelper('movies', function(movieList, options) {
+	var type 	= 	"",
+		movie = 	"",
+		output 	= 	'<table class="table table-hover">'+
+					'<thead>'+
+					'<tr>'+
+					'<th>Title</th>'+
+					'<th>Edit</th>'+
+					'<th>Remove</th>'+
+					'</tr>'+
+					'</thead>'+
+					'<tbody>';
+
+	for(var i=0, iLen=movieList.length; i<iLen; i++) {
+		movie = 	'<tr>'+
+					'<td>'+movieList[i].TITLE+'</td>'+
+					'<td><button id="editmovie-'+movieList[i].MID+'" type="button" class="btn btn-sm btn-warning editmovie">Edit</button></td>'+
+					'<td><button id="removemovie-'+movieList[i].MID+'" type="button" class="btn btn-sm btn-danger removemovie">Remove</button></td></tr>';
+
+		output += movie;
+	}
+	
+	output += '</tbody></table>';
+
+	return output;
+});
+
+/******************************************************************************
  Edit User Helper
 ******************************************************************************/
 
@@ -401,4 +432,249 @@ Handlebars.registerHelper('edituser', function(userObject, options) {
 
 	return output;
 
+});
+
+/******************************************************************************
+ Edit Movie Helper
+******************************************************************************/
+
+Handlebars.registerHelper('editmovie', function(movieObject, options) {
+	movieObject = movieObject[0];
+	console.log("movieobject : ", movieObject);
+	var output = 	'<div class="container editmovie-form">'+
+					'<div class="text-danger editmovie-error"></div>'+
+					'<br>'+
+					'<div class="col-sm-6 col-sm-offset-3">'+
+					'<form class="form-horizontal" role="form">'+
+					'<div class="form-group">'+
+					'<label for="editmovie-email" class="col-sm-3 control-label">Title</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="text" class="form-control input-lg" id="editmovie-title" placeholder="Title" value="'+movieObject.title+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-rating" class="col-sm-3 control-label">Rating</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="number" class="form-control input-lg" id="editmovie-rating" placeholder="Rating" value="'+movieObject.rating+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-director" class="col-sm-3 control-label">Director</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="text" class="form-control input-lg" id="editmovie-director" placeholder="Director" value="'+movieObject.director+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-cast" class="col-sm-3 control-label">Cast</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="text" class="form-control input-lg" id="editmovie-cast" placeholder="Cast" value="'+movieObject.cast+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-genre" class="col-sm-3 control-label">Genre</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="text" class="form-control input-lg" id="editmovie-title" placeholder="Genre" value="'+movieObject.genre+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-runtime" class="col-sm-3 control-label">Runtime</label>'+
+					'<div class="col-sm-9">'+
+					'<input type="number" class="form-control input-lg" id="editmovie-runtime" placeholder="Runtime" value="'+movieObject.runtime+'">'+
+					'</div>'+
+					'</div>'+
+					'<div class="form-group">'+
+					'<label for="editmovie-mdarating" class="col-sm-3 control-label">MDA Rating</label>'+
+					'<div class="col-sm-9">'+
+					'<select id="editmovie-mdarating" class="form-control input-lg">';
+
+	switch(movieObject.mdarating) {
+		case 'G':
+			output += 	'<option value="UR">UR</option>'+
+						'<option value="G" selected="selected">G</option>'+
+						'<option value="PG13">PG13</option>'+
+						'<option value="NC16">NC16</option>'+
+						'<option value="M18">M18</option>'+
+						'<option value="R21">R21</option>';
+			break;
+		case 'PG13':
+			output += 	'<option value="UR">UR</option>'+
+						'<option value="G">G</option>'+
+						'<option value="PG13" selected="selected">PG13</option>'+
+						'<option value="NC16">NC16</option>'+
+						'<option value="M18">M18</option>'+
+						'<option value="R21">R21</option>';
+			break;
+		case 'NC16':
+			output += 	'<option value="UR">UR</option>'+
+						'<option value="G">G</option>'+
+						'<option value="PG13">PG13</option>'+
+						'<option value="NC16" selected="selected">NC16</option>'+
+						'<option value="M18">M18</option>'+
+						'<option value="R21">R21</option>';
+			break;
+		case 'M18':
+			output += 	'<option value="UR">UR</option>'+
+						'<option value="G">G</option>'+
+						'<option value="PG13">PG13</option>'+
+						'<option value="NC16">NC16</option>'+
+						'<option value="M18" selected="selected">M18</option>'+
+						'<option value="R21">R21</option>';
+			break;
+		case 'R21':
+			output += 	'<option value="UR">UR</option>'+
+						'<option value="G">G</option>'+
+						'<option value="PG13">PG13</option>'+
+						'<option value="NC16">NC16</option>'+
+						'<option value="M18">M18</option>'+
+						'<option value="R21" selected="selected">R21</option>';
+			break;
+		default:
+			output += 	'<option value="UR" selected="selected">UR</option>'+
+						'<option value="G">G</option>'+
+						'<option value="PG13">PG13</option>'+
+						'<option value="NC16">NC16</option>'+
+						'<option value="M18">M18</option>'+
+						'<option value="R21">R21</option>';
+			break;
+
+	};
+
+	output +=	'</select>'+
+				'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+				'<label for="editmovie-language" class="col-sm-3 control-label">Language</label>'+
+				'<div class="col-sm-9">'+
+				'<select id="editmovie-language" class="form-control input-lg">';
+
+	switch(movieObject.languages) {
+		case 'English':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English" selected="selected">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Chinese':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese" selected="selected">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Japanese':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese" selected="selected">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Hindu':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu" selected="selected">Hindu</option>';
+			break;
+		case 'Spanish':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish" selected="selected">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		default:
+			output += 	'<option value="None" selected="selected">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+	};
+
+	output +=	'</select>'+
+				'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+				'<label for="editmovie-subtitles" class="col-sm-3 control-label">Subtitles</label>'+
+				'<div class="col-sm-9">'+
+				'<select id="editmovie-subtitles" class="form-control input-lg">';
+
+
+	switch(movieObject.subtitles) {
+		case 'English':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English" selected="selected">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Chinese':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese" selected="selected">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Japanese':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese" selected="selected">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Spanish':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish" selected="selected">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+		case 'Hindu':
+			output += 	'<option value="None">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu" selected="selected">Hindu</option>';
+			break;
+		default:
+			output += 	'<option value="None" selected="selected">None</option>'+
+						'<option value="English">English</option>'+
+						'<option value="Chinese">Chinese</option>'+
+						'<option value="Japanese">Japanese</option>'+
+						'<option value="Spanish">Spanish</option>'+
+						'<option value="Hindu">Hindu</option>';
+			break;
+	}
+
+	output += 	'</select>'+
+				'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+				'<label for="editmovie-synopsis" class="col-sm-3 control-label">Synopsis</label>'+
+				'<div class="col-sm-9">'+
+				'<textarea class="form-control input-lg" rows="7" id="editmovie-synopsis" placeholder="Synopsis">'+movieObject.synopsis+'</textarea>'+
+				'</div>'+
+				'</div>'+
+				'<div class="form-group">'+
+				'<div class="col-sm-2 col-sm-offset-4">'+
+				'<button type="button" class="btn btn-lg btn-danger editmovie-cancel">Cancel</button>'+
+				'</div><div class="col-sm-6">'+
+				'<button type="button" id="'+movieObject.mid+'" class="btn btn-lg btn-primary editmovie-submit">Update</button>'+
+				'</div></div></div></form>'+
+				'</div>'+
+				'</div>';
+
+	return output;
 });

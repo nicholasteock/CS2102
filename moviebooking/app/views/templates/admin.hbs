@@ -1,6 +1,15 @@
 {{#navbar}}{{/navbar}}
 
-<section class="container users-management hide">
+<section class="container admin-nav">
+	<ul class="nav nav-tabs nav-justified" role="tablist">
+	  <li role="presentation" class="active"><a id="admin-users">Users</a></li>
+	  <li role="presentation"><a id="admin-bookings">Bookings</a></li>
+	  <li role="presentation"><a id="admin-movies">Movies</a></li>
+	  <li role="presentation"><a id="admin-showtimes">Showtimes</a></li>
+	</ul>
+</section>
+
+<section class="container admin-management users-management hide">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>User Management<button type="button" class="btn btn-primary pull-right adduser">Add User</button></h3>
@@ -11,13 +20,35 @@
 	</div>
 </section>
 
-<section class="container movie-management hide">
+<section class="container admin-management bookings-management hide">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Booking Management</h3>
+		</div>
+		<div class="panel-body">
+		{{#bookings bookings}}{{/bookings}}
+		</div>
+	</div>
+</section>
+
+<section class="container admin-management movies-management hide">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>Movie Management<button type="button" class="btn btn-primary pull-right addmovie">Add Movie</button></h3>
 		</div>
 		<div class="panel-body">
-		{{#bookings bookings}}{{/bookings}}
+		{{#movies movies}}{{/movies}}
+		</div>
+	</div>
+</section>
+
+<section class="container admin-management showtimes-management hide">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Showtimes Management<button type="button" class="btn btn-primary pull-right addmovie">Add Showtime</button></h3>
+		</div>
+		<div class="panel-body">
+		{{!-- {{#showtimes showtimes}}{{/showtimes}} --}}
 		</div>
 	</div>
 </section>

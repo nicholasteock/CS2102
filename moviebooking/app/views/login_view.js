@@ -19,6 +19,10 @@ var afterRender = function() {
 };
 
 var login = function() {
+	$(".loginSpinner").removeClass("hide");
+	$(".login-submit").addClass("hide");
+	$(".login-register").addClass("hide");
+
 	var email 		= $("#login-email").val(),
 		password 	= $("#login-password").val(),
 		params 		= {

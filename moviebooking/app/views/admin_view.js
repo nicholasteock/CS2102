@@ -49,6 +49,33 @@ var adminpanel = function() {
 	return false;
 };
 
+var adminnav = function(ev) {
+	var id = ev.target.id;
+	$(".admin-nav ul li").removeClass("active");
+	$("#"+id).parent().addClass("active");
+
+	switch (id) {
+		case "admin-users":
+			$(".admin-management").addClass("hide");
+			$(".users-management").removeClass("hide");
+			break;
+		case "admin-bookings":
+			$(".admin-management").addClass("hide");
+			$(".bookings-management").removeClass("hide");
+			break;
+		case "admin-movies":
+			$(".admin-management").addClass("hide");
+			$(".movies-management").removeClass("hide");
+			break;
+		case "admin-showtimes":
+			$(".admin-management").addClass("hide");
+			$(".showtimes-management").removeClass("hide");
+			break;
+		default:
+			break;
+	}
+};
+
 var adduser = function() {
 	Application.router.navigate('adduser', {trigger: true});
 	return false;
@@ -64,6 +91,13 @@ var edituser = function(ev) {
 		userId 	= temp.substring(9);
 
 	Application.router.navigate('edituser?userId='+userId, {trigger: true});
+};
+
+var editmovie = function(ev) {
+	var temp 	= ev.target.id;
+		mid 	= temp.substring(10);
+
+	Application.router.navigate('editmovie?mid='+mid, {trigger: true});
 };
 
 var removeuser = function(ev) {
@@ -115,12 +149,13 @@ var removebooking = function(ev) {
 var afterRender = function(){
 	$(".loadingSpinner").addClass("hide");
 	$(".users-management").removeClass("hide");
-	$(".movie-management").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".admin-nav li").click(adminnav);
 	$(".adduser").click(adduser);
 	$(".addmovie").click(addmovie);
 	$(".edituser").click(edituser);
+	$(".editmovie").click(editmovie);
 	$(".removeuser").click(removeuser);
 	$(".editbooking").click(editbooking);
 	$(".removebooking").click(removebooking);

@@ -1,5 +1,5 @@
 var View     = require('./view'),
-	template = require('./templates/edituser');
+	template = require('./templates/editmovie');
 
 var getRenderData = function() {
 	if(localStorage.userId == undefined || localStorage.name == undefined) {
@@ -25,10 +25,9 @@ var getRenderData = function() {
 	data[filterArr[0]] = filterArr[1];
 
 	$.ajax({
-			url 		: Application.api+"userinfo",
-			type 		: "POST",
+			url 		: Application.api+"movie?mid="+filterArr[1],
+			type 		: "GET",
 			dataType	: 'json',
-			data 		: data,
 			success		: onSuccess,
 			error		: onError
 	});
@@ -51,46 +50,71 @@ var adminpanel = function() {
 };
 
 
-var edituser = function(ev) {
-	var userId 		= ev.target.id,
-		email 		= $("#edituser-email").val(),
-		name 		= $("#edituser-name").val(),
-		password 	= $("#edituser-password").val(),
-		isAdmin 	= $('#edituser-isadmin').is(":checked") ? 0 : 1,
+var editmovie = function(ev) {
+
+	var mid 		= ev.target.id,
+		title 		= $("#editmovie-title").val(),
+		rating 		= $("#editmovie-rating").val(),
+		director 	= $("#editmovie-director").val(),
+		cast 		= $("#editmovie-cast").val(),
+		genre 		= $("#editmovie-genre").val(),
+		runtime 	= $("#editmovie-runtime").val(),
+		mdarating 	= $("#editmovie-mdarating").val(),
+		languages 	= $("#editmovie-languages").val(),
+		subtitles 	= $("#editmovie-subtitles").val(),
+		synopsis 	= $("#editmovie-synopsis").val(),
 		params 		= {
-						userId 		: userId,
-						email 		: email,
-						name 		: name,
-						password 	: password,
-						userType 	: isAdmin
+						mid 		: mid,
+						title 		: title,
+						rating 		: rating,
+						director 	: director,
+						cast 		: cast,
+						genre 		: genre,
+						runtime 	: runtime,
+						mdarating 	: mdarating,
+						languages	: languages,
+						subtitles 	: subtitles,
+						synopsis 	: synopsis,
 					};
 
 	if(!validate(params)) return;
 
 	$.ajax({
-			url 		: Application.api+"edituser",
+			url 		: Application.api+"editmovie",
 			type 		: "POST",
 			dataType	: 'json',
 			data 		: params,
 			success		: function(response) {
-				alert("User "+params.name+" has been updated.");
+				alert("Movie "+params.title+" has been updated.");
 				return false;
 			},
 			error		: function(response) {
-				alert("Error in edit user "+params.name);
+				alert("Error in edit movie "+params.name);
 			}
 	});
 };
 
 var validate = function(params) {
-	var email 		= params.email,
-		name 		= params.name,
-		password 	= params.password;
 
-	$(".edituser-error").html("");
+	$(".editmovie-error").html("");
 
-	if(email.length==0 || name.length==0 || password.length==0) {
-		$(".edituser-error").html("*All fields are required.");
+	if(	params.title.length==0 ||
+		params.rating.length==0 ||
+		params.director.length==0 ||
+		params.cast.length==0 ||
+		params.runtime.length==0
+	) {
+		$(".editmovie-error").html("*All fields are required.");
+		return false;
+	}
+
+	if(params.runtime <= 0) {
+		$(".editmovie-error").html("Movie runtime cannot be 0");
+		return false;
+	}
+
+	if(params.rating > 10 || params.rating < 0) {
+		$(".editmovie-error").html("Rating is between 0-10");
 		return false;
 	}
 
@@ -103,15 +127,15 @@ var editcancel = function() {
 
 var afterRender = function() {
 	$(".loadingSpinner").addClass("hide");
-	$(".edituser-panel").removeClass("hide");
+	$(".editmovie-panel").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
-	$(".edituser-submit").click(edituser);
-	$(".edituser-cancel").click(editcancel);
-};
+	$(".editmovie-submit").click(editmovie);
+	$(".editmovie-cancel").click(editcancel);
+}
 
 module.exports = View.extend({
-    id 				: 'edituser-view',
+    id 				: 'editmovie-view',
     getRenderData 	: getRenderData,
     afterRender 	: afterRender,
     template 		: template

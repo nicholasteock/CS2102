@@ -12,7 +12,8 @@ Application = {
             AdminView           = require('views/admin_view')
             AdduserView         = require('views/adduser_view')
             EdituserView         = require('views/edituser_view')
-        	AddmovieView 		= require('views/addmovie_view')
+            AddmovieView        = require('views/addmovie_view')
+        	EditmovieView 		= require('views/editmovie_view')
             Router   			= require('lib/router');
         
         this.api                = "http://ec2-54-69-16-201.us-west-2.compute.amazonaws.com/api/";
@@ -27,7 +28,8 @@ Application = {
         this.adminView          = new AdminView();
         this.adduserView        = new AdduserView();
         this.edituserView       = new EdituserView();
-        this.addmovieView 		= new AddmovieView();
+        this.addmovieView       = new AddmovieView();
+        this.editmovieView 		= new EditmovieView();
         this.router   			= new Router();
                 
         if (typeof Object.freeze === 'function') Object.freeze(this)
