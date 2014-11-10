@@ -125,6 +125,14 @@ router.post('/edituser', function( req, res ) {
 	movies.editUser(req.body, reply);
 });
 
+router.post('/editmovie', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.editMovie(req.body, reply);
+});
+
 router.post('/removeuser', function( req, res ) {
 	function reply( response ) {
 		res.send(response);
