@@ -123,7 +123,7 @@ var removeuser = function(ev) {
 
 var removemovie = function(ev) {
 	var temp 		= ev.target.id,
-		userId 		= temp.substring(12);
+		mid 		= temp.substring(12);
 		params 		= { mid: mid };
 
 	$.ajax({
