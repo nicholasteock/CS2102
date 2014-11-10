@@ -77,6 +77,7 @@ var resetFilter = function(ev) {
 	$("#filterSubtitles").html("All Subtitles");
 	$("#filtermdarating").html("All MDA Ratings");
 	$("#filterRating").html("Sort by Rating");
+	$("#filterSubmit").click();
 	return;
 }
 

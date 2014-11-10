@@ -1,5 +1,5 @@
 /******************************************************************************
- Movie Listing Helper
+ Navbar Helper
 ******************************************************************************/
 
 Handlebars.registerHelper( 'navbar', function(options) {
@@ -44,6 +44,8 @@ Handlebars.registerHelper( 'movielisting', function(listingObject, options) {
 		return output;
 	}
 
+	output += '<h4 class="text-right">'+listingObject.length+' results</h4>';
+
 	for( var i=0, iLen=listingObject.length; i<iLen; i++ ) {
 		var itemHtml = "";
 
@@ -53,6 +55,7 @@ Handlebars.registerHelper( 'movielisting', function(listingObject, options) {
 					'</div>'+
 					'<div class="col-md-5 col-lg-5 listing-left">'+
 					'<img class="listing-thumbnail" src="img/thumbs/'+listingObject[i].MID+'.jpg" alt="'+listingObject[i].TITLE+'">'+
+					'<div class="text-center"><strong>Rating: '+listingObject[i].RATING+' / 10</strong></div>'+
 					'</div>'+
 					'<div class="col-md-7 col-lg-7 listing-right">'+
 					'<div class="listing-synopsis">'+
