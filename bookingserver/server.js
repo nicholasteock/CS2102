@@ -141,6 +141,14 @@ router.post('/editmovie', function( req, res ) {
 	movies.editMovie(req.body, reply);
 });
 
+router.post('/editbooking', function( req, res ) {
+	function reply( response ) {
+		res.send(response);
+	}
+
+	movies.editBooking(req.body, reply);
+});
+
 router.post('/removeuser', function( req, res ) {
 	function reply( response ) {
 		res.send(response);

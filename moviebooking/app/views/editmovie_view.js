@@ -130,6 +130,7 @@ var afterRender = function() {
 	$(".editmovie-panel").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 	$(".editmovie-submit").click(editmovie);
 	$(".editmovie-cancel").click(editcancel);
 }

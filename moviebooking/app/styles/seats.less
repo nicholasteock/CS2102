@@ -37,8 +37,7 @@
 	}
 
 	&:hover {
-		-webkit-filter: saturate(50);
-  		filter: saturate(50);
+		background-image:url("../img/seat/hover_seat_img.jpg"); 
 	}
 }
 
@@ -47,6 +46,7 @@
 	background-image:url("../img/seat/booked_seat_img.jpg");          
 
 	&:hover {
+		background-image:url("../img/seat/booked_seat_img.jpg"); 
 		cursor: default;
 		-webkit-filter: none;
   		filter: none;
@@ -57,7 +57,18 @@
 { 
 	background-image:url("../img/seat/selected_seat_img.jpg");        
 
+	&:hover {       
+		-webkit-filter: none;
+  		filter: none;
+	}
+}
+
+#place .editingSeat
+{ 
+	background-image:url("../img/seat/editing_seat_img.jpg");          
+
 	&:hover {
+		cursor: default;
 		-webkit-filter: none;
   		filter: none;
 	}

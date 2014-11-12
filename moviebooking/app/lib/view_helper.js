@@ -16,6 +16,7 @@ Handlebars.registerHelper( 'navbar', function(options) {
 		else {
 			output += 	'<ul class="nav navbar-nav">'+
 						'<li><a href="#/listing"><button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-home"></span></button></li>'+
+						'<li><a><button type="button" class="btn btn-default navbar-btn editpanel">Your Bookings</button></a></li>'+
 						'</ul>';
 		}
 		
@@ -346,7 +347,7 @@ Handlebars.registerHelper('bookings', function(bookinglist, options) {
 					'<td>'+bookinglist[i].seatnum+'</td>'+
 					'<td>'+bookinglist[i].ticketnum+'</td>'+
 					'<td><button id="editbooking-'+bookinglist[i].ticketnum+'" type="button" class="btn btn-sm btn-warning editbooking">Edit</button></td>'+
-					'<td><button id="removebooking-'+bookinglist[i].ticketnum+'" type="button" class="btn btn-sm btn-danger removebooking">Remove</button></td></tr>';
+					'<td><button id="removebooking-'+bookinglist[i].ticketnum+'" type="button" class="btn btn-sm btn-danger removebooking">Cancel Booking</button></td></tr>';
 
 		output += booking;
 	}

@@ -51,6 +51,7 @@ var adminpanel = function() {
 var afterRender = function(){
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 };
 
 var events = {

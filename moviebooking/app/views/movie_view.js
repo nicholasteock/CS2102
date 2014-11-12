@@ -55,6 +55,7 @@ var getRenderData = function() {
 var afterRender = function() {
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 };
 
 var logout = function() {
@@ -68,6 +69,11 @@ var logout = function() {
 
 var adminpanel = function() {
 	Application.router.navigate('admin', {trigger: true});
+	return false;
+};
+
+var editpanel = function() {
+	Application.router.navigate('bookingmanagement', {trigger: true});
 	return false;
 };
 

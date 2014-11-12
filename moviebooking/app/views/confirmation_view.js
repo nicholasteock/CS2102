@@ -23,9 +23,15 @@ var adminpanel = function() {
 	return false;
 };
 
+var editpanel = function() {
+	Application.router.navigate('bookingmanagement', {trigger: true});
+	return false;
+};
+
 var afterRender = function() {
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 }
 
 module.exports = View.extend({

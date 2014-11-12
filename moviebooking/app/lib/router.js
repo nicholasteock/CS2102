@@ -2,19 +2,21 @@ var application = require('application')
 
 module.exports 	= Backbone.Router.extend({
     routes: {
-        '' 				: 'login',
-        'login'         : 'login',
-        'register' 		: 'register',
-        'listing' 		: 'listing',
-        'movie' 		: 'movie',
-        'booking' 		: 'booking',
-        'confirmation' 	: 'confirmation',
-        'edit'          : 'edit',
-        'admin'         : 'admin',
-        'adduser'       : 'adduser',
-        'edituser'      : 'edituser',
-        'addmovie'      : 'addmovie',
-        'editmovie'     : 'editmovie'
+        '' 				    : 'login',
+        'login'             : 'login',
+        'register' 		    : 'register',
+        'listing' 		    : 'listing',
+        'movie' 		    : 'movie',
+        'booking' 		    : 'booking',
+        'confirmation' 	    : 'confirmation',
+        'edit'              : 'edit',
+        'admin'             : 'admin',
+        'bookingmanagement' : 'bookingmanagement',
+        'editbooking'       : 'editbooking',
+        'adduser'           : 'adduser',
+        'edituser'          : 'edituser',
+        'addmovie'          : 'addmovie',
+        'editmovie'         : 'editmovie'
     },
     
     login: function() {
@@ -47,6 +49,14 @@ module.exports 	= Backbone.Router.extend({
 
     admin: function() {
         $('body').html(application.adminView.render())
+    },
+
+    bookingmanagement: function() {
+        $('body').html(application.bookingmanagementView.render())
+    },
+
+    editbooking: function() {
+        $('body').html(application.editbookingView.render())
     },
 
     adduser: function() {

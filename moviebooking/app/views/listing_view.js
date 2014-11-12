@@ -55,6 +55,11 @@ var adminpanel = function() {
 	return false;
 };
 
+var editpanel = function() {
+	Application.router.navigate('bookingmanagement', {trigger: true});
+	return false;
+};
+
 var languageSelected = function(ev) {
 	$("#filterLanguage").html(ev.target.text);
 };
@@ -168,6 +173,7 @@ var afterRender = function(){
 	$(".movielistingContainer").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 	$("#filterReset").click(resetFilter);
 	$("#filterSubmit").click(submitFilter);
 	$(".languageDropdown li").click(languageSelected);

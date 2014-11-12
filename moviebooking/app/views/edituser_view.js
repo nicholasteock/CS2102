@@ -106,6 +106,7 @@ var afterRender = function() {
 	$(".edituser-panel").removeClass("hide");
 	$(".logout").click(logout);
 	$(".adminpanel").click(adminpanel);
+	$(".editpanel").click(editpanel);
 	$(".edituser-submit").click(edituser);
 	$(".edituser-cancel").click(editcancel);
 };
