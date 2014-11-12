@@ -209,25 +209,25 @@ var editBooking = function() {
     seats : bookedSeats,
     c_id  : c_id
   };
-
-  $.ajax({
-      url       : Application.api+"editBooking",
-      type      : "POST",
-      dataType  : 'json',
-      data      : params,
-      success   : function(response) {
-        var tempObj = {
-          movieDetails  : movieDetails,
-          bookedSeats   : params.seats
-        };
-        localStorage.booking = "";
-        localStorage.booking = JSON.stringify(tempObj);
-        Application.router.navigate('confirmation', {trigger: true});
-      },
-      error     : function(response) {
-        console.log("in error : ", response);
-      }
-  });
+console.log("PARAMS : ", params);
+  // $.ajax({
+  //     url       : Application.api+"editBooking",
+  //     type      : "POST",
+  //     dataType  : 'json',
+  //     data      : params,
+  //     success   : function(response) {
+  //       var tempObj = {
+  //         movieDetails  : movieDetails,
+  //         bookedSeats   : params.seats
+  //       };
+  //       localStorage.booking = "";
+  //       localStorage.booking = JSON.stringify(tempObj);
+  //       Application.router.navigate('confirmation', {trigger: true});
+  //     },
+  //     error     : function(response) {
+  //       console.log("in error : ", response);
+  //     }
+  // });
 };
 
 var editcancel = function() {
