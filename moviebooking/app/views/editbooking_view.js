@@ -210,24 +210,24 @@ var editBooking = function() {
     c_id  : c_id
   };
 console.log("PARAMS : ", params);
-  // $.ajax({
-  //     url       : Application.api+"editBooking",
-  //     type      : "POST",
-  //     dataType  : 'json',
-  //     data      : params,
-  //     success   : function(response) {
-  //       var tempObj = {
-  //         movieDetails  : movieDetails,
-  //         bookedSeats   : params.seats
-  //       };
-  //       localStorage.booking = "";
-  //       localStorage.booking = JSON.stringify(tempObj);
-  //       Application.router.navigate('confirmation', {trigger: true});
-  //     },
-  //     error     : function(response) {
-  //       console.log("in error : ", response);
-  //     }
-  // });
+  $.ajax({
+      url       : Application.api+"editBooking",
+      type      : "POST",
+      dataType  : 'json',
+      data      : params,
+      success   : function(response) {
+        var tempObj = {
+          movieDetails  : movieDetails,
+          bookedSeats   : params.seats
+        };
+        localStorage.booking = "";
+        localStorage.booking = JSON.stringify(tempObj);
+        Application.router.navigate('confirmation', {trigger: true});
+      },
+      error     : function(response) {
+        console.log("in error : ", response);
+      }
+  });
 };
 
 var editcancel = function() {
