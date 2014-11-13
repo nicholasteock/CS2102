@@ -142,9 +142,12 @@ var removemovie = function(ev) {
 	});
 };
 
-var editbooking = function() {
-	
-}
+var editbooking = function(ev) {
+	var temp 		= ev.target.id,
+		ticketnum 	= temp.substring(12);
+
+	Application.router.navigate('editbooking?tid='+ticketnum, {trigger: true});
+};
 
 var removebooking = function(ev) {
 	var temp 		= ev.target.id,

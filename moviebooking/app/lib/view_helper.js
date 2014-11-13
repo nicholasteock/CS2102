@@ -88,6 +88,10 @@ Handlebars.registerHelper('showtimeslist', function(showtimesObject, options) {
 		formedArray.push(formedObject);
 	});
 
+	if(formedArray.length === 0) {
+		output = "<h4>No showtimes available for this title.</h4>"
+	}
+
 	for( var i=0, iLen=formedArray.length; i<iLen; i++ ) {
 		var itemHtml = "";
 

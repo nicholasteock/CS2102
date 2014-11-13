@@ -103,6 +103,8 @@ var resetFilter = function(ev) {
 	$("#filterLanguage").html("All Languages");
 	$("#filterSubtitles").html("All Subtitles");
 	$("#filtermdarating").html("All MDA Ratings");
+	$("#ratingDropdown").val("None");
+	$("#alphaDropdown").val("None");
 	$("#filterSubmit").click();
 	return;
 }
@@ -184,7 +186,7 @@ var afterRender = function(){
 			else if(dataArray[i].indexOf("ratingorder") >= 0) {
 				temp = dataArray[i];
 				temp = temp.substring(temp.indexOf("=")+1);
-				$("#ratingOrder").val(temp);
+				$("#ratingDropdown").val(temp);
 				if(temp == "ASC" || temp =="DESC") {
 					$("#alphaDropdown").val("None").prop("disabled", "disabled");
 				}
