@@ -54,11 +54,11 @@ Handlebars.registerHelper( 'movielisting', function(listingObject, options) {
 					'<div class="col-sm-12 col-md-12 col-lg-12 listing-title">'+
 					listingObject[i].TITLE+
 					'</div>'+
-					'<div class="col-md-5 col-lg-5 listing-left">'+
+					'<div class="col-sm-5 col-md-5 col-lg-5 listing-left">'+
 					'<img class="listing-thumbnail" src="img/thumbs/'+listingObject[i].MID+'.jpg" alt="'+listingObject[i].TITLE+'">'+
 					'<div class="text-center"><strong>Rating: '+listingObject[i].RATING+' / 10</strong></div>'+
 					'</div>'+
-					'<div class="col-md-7 col-lg-7 listing-right">'+
+					'<div class="col-sm-7 col-md-7 col-lg-7 listing-right">'+
 					'<div class="listing-synopsis">'+
 					listingObject[i].SYNOPSIS+
 					'</div>'+
