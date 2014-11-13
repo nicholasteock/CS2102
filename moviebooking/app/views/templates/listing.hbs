@@ -3,17 +3,23 @@
 	<div class="col-md-12 col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h2 class="panel-title">Filters / Sorting</h2>
+				<h2 class="panel-title">Filter By</h2>
 			</div>
 			<div class="panel-body">
 				<form class="form-inline filters" role="form">
 					<div class="form-group">
-						<div class="col-sm-12">
+						<label for="filter1" class="col-sm-3">
+							Title
+						</label>
+						<div id="filter1" class="col-sm-9">
 							<input type="text" class="form-control" id="filterTitle" placeholder="Search Movie Title">
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-12 dropdown">
+						<label for="filter2" class="col-sm-5">
+							Language
+						</label>
+						<div id="filter2" class="col-sm-7 dropdown">
 							<button type="button" class="form-control dropdown-toggle" id="filterLanguage" data-toggle="dropdown">All Languages</button>
 							<ul class="dropdown-menu languageDropdown" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1">All Languages</a></li>
@@ -25,18 +31,24 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-12 dropdown">
+						<label for="filter3" class="col-sm-5">
+							Subtitles
+						</label>
+						<div id="filter3" class="col-sm-7 dropdown">
 							<button type="button" class="form-control dropdown-toggle" id="filterSubtitles" data-toggle="dropdown">All Subtitles</button>
-						<ul class="dropdown-menu subtitlesDropdown" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1">All Subtitles</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1">None</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1">English</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1">Chinese</a></li>
-						</ul>
+							<ul class="dropdown-menu subtitlesDropdown" role="menu">
+								<li role="presentation"><a role="menuitem" tabindex="-1">All Subtitles</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1">None</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1">English</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1">Chinese</a></li>
+							</ul>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-12">
+						<label for="filter4" class="col-sm-5">
+							MDA Rating
+						</label>
+						<div id="filter4" class="col-sm-7">
 							<button type="button" class="form-control dropdown-toggle" id="filtermdarating" data-toggle="dropdown">All MDA Ratings</button>
 							<ul class="dropdown-menu mdaratingDropdown" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1">All MDA Ratings</a></li>
@@ -48,23 +60,52 @@
 							</ul>
 						</div>
 					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container sortContainer">
+	<div class="col-md-12 col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Sort By</h2>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline sortForm" role="form">
 					<div class="form-group">
-						<div class="col-sm-12">
-							<button type="button" class="form-control dropdown-toggle" id="filterRating" data-toggle="dropdown">Sort by Rating</button>
-							<ul class="dropdown-menu ratingDropdown" role="menu">
-								<li role="presentation"><a role="menuitem" tabindex="-1">Ascending</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1">Descending</a></li>
-							</ul>
+						<label for="ratingDropdown" class="col-sm-4">
+							Rating
+						</label>
+						<div class="col-sm-7">
+							<select id="ratingDropdown" class="form-control">
+								<option role="presentation" value="None" selected="selected">-</option>
+								<option role="presentation" value="ASC">Ascending</option>
+								<option role="presentation" value="DESC">Descending</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="alphaDropdown" class="col-sm-5">
+							Alphabetical
+						</label>
+						<div class="col-sm-7">
+							<select id="alphaDropdown" class="form-control">
+								<option role="presentation" value="None" selected="selected">-</option>
+								<option role="presentation" value="ASC">Ascending</option>
+								<option role="presentation" value="DESC">Descending</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group pull-right">
+						<div class="col-sm-12">
+							<button type="button" class="btn btn-primary" id="filterSubmit">Submit</button>
+						</div>
+					</div>
+					<div class="form-group pull-right">
 						<div class="col-sm-12">
 							<button type="button" class="btn btn-danger" id="filterReset">Reset</button>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<button type="button" class="btn btn-primary" id="filterSubmit">Filter</button>
 						</div>
 					</div>
 				</form>
@@ -72,6 +113,7 @@
 		</div>
 	</div>
 </section>
+
 <section class="container movielistingContainer hide">
 	<div class="col-sm-12">
 		<div class="panel panel-default">

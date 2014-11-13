@@ -72,16 +72,37 @@ var mdaratingSelected = function(ev) {
 	$("#filtermdarating").html(ev.target.text);
 };
 
-var ratingSelected = function(ev) {
-	$("#filterRating").html(ev.target.text);
+var ratingChanged = function() {
+	var ratingSelected = $("#ratingDropdown").val();
+
+	if(ratingSelected != "None") {
+		$("#alphaDropdown").val("None").prop('disabled', 'disabled');
+	}
+	else {
+		$("#alphaDropdown").prop('disabled', false);
+	}
 };
+
+var alphaChanged = function() {
+	var alphaSelected = $("#alphaDropdown").val();
+
+	if(alphaSelected != "None") {
+		$("#ratingDropdown").val("None").prop('disabled', 'disabled');
+	}
+	else {
+		$("#ratingDropdown").prop('disabled', false);
+	}
+};
+
+// var ratingSelected = function(ev) {
+// 	$("#filterRating").html(ev.target.text);
+// };
 
 var resetFilter = function(ev) {
 	$("#filterTitle").val("");
 	$("#filterLanguage").html("All Languages");
 	$("#filterSubtitles").html("All Subtitles");
 	$("#filtermdarating").html("All MDA Ratings");
-	$("#filterRating").html("Sort by Rating");
 	$("#filterSubmit").click();
 	return;
 }
@@ -91,7 +112,8 @@ var submitFilter = function() {
 	var language 	= $("#filterLanguage").text();
 	var subtitles 	= $("#filterSubtitles").text();
 	var mdarating 	= $("#filtermdarating").text();
-	var ratingorder = $("#filterRating").text();
+	var ratingorder = $("#ratingDropdown").val();
+	var alphaorder 	= $("#alphaDropdown").val();
 
 	var temp = "";
 	var queryParams = [];
@@ -117,8 +139,13 @@ var submitFilter = function() {
 		queryParams.push(temp);
 	}
 
-	if(ratingorder != "Sort by Rating") {
+	if(ratingorder != "None") {
 		temp="ratingorder="+encodeURI(ratingorder);
+		queryParams.push(temp);
+	}
+
+	if(alphaorder != "None") {
+		temp="alphaorder="+encodeURI(alphaorder);
 		queryParams.push(temp);
 	}
 
@@ -157,7 +184,18 @@ var afterRender = function(){
 			else if(dataArray[i].indexOf("ratingorder") >= 0) {
 				temp = dataArray[i];
 				temp = temp.substring(temp.indexOf("=")+1);
-				$("#filterRating").html(temp);
+				$("#ratingOrder").val(temp);
+				if(temp == "ASC" || temp =="DESC") {
+					$("#alphaDropdown").val("None").prop("disabled", "disabled");
+				}
+			}
+			else if(dataArray[i].indexOf("alphaorder") >= 0) {
+				temp = dataArray[i];
+				temp = temp.substring(temp.indexOf("=")+1);
+				$("#alphaDropdown").val(temp);
+				if(temp == "ASC" || temp =="DESC") {
+					$("#ratingDropdown").val("None").prop("disabled", "disabled");
+				}
 			}
 			else if(dataArray[i].indexOf("title") >= 0) {
 				temp = dataArray[i];
@@ -179,7 +217,8 @@ var afterRender = function(){
 	$(".languageDropdown li").click(languageSelected);
 	$(".subtitlesDropdown li").click(subtitlesSelected);
 	$(".mdaratingDropdown li").click(mdaratingSelected);
-	$(".ratingDropdown li").click(ratingSelected);
+	$("#ratingDropdown").change(ratingChanged);
+	$("#alphaDropdown").change(alphaChanged);
 };
 
 var events = {
