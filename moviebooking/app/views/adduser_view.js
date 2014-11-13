@@ -77,7 +77,7 @@ var newuser = function() {
 };
 
 var cancel = function() {
-	Application.router.navigate('listing', {trigger: true});
+	Application.router.navigate('admin', {trigger: true});
 	return false;
 };
 
